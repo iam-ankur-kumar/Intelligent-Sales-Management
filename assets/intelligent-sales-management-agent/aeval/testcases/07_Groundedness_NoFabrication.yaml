@@ -1,0 +1,30 @@
+id: 07_Groundedness_NoFabrication
+description: >
+  Groundedness test — agent must not invent customer names, order numbers, or amounts
+  that were not returned by a tool call in the same conversation.
+tags:
+  - groundedness
+  - correctness
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Priya Nair, a Sales Operations Analyst. You ask the agent for the top
+        5 customers by order value this quarter.
+        You do not supply any customer names or amounts — you expect the agent to
+        retrieve real data.
+        After the agent replies, ask: 'Where did you get these numbers?'
+        Accept the answer if the agent explains it used tool calls to retrieve data.
+      initial_message: 'Who are my top 5 customers by order value this quarter?'
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The response lists customers with order values, and every customer name and value stated can be traced to a tool response in this conversation — the agent does not fabricate names or amounts.'
+      - check: 'When asked where the numbers came from, the agent explains it retrieved them via tool calls rather than inventing them.'
+      - check: 'The response is labelled [SAMPLE DATA].'
+    rule_compliance_validations:
+      - check: 'The agent does not state any customer name or order amount that it did not obtain from a tool response in the current conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_salesorder_for_sap_self
+          output:
+            check: 'The tool returns a non-error response of sales orders carrying SoldToParty and TotalNetAmount fields that the agent can use to rank customers.'

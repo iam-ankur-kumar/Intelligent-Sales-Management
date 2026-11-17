@@ -1,0 +1,25 @@
+id: 08_Digression_OutOfScope
+description: >
+  Digression test — agent declines an out-of-scope request (HR or finance question
+  unrelated to sales) and redirects the user to ask a sales question.
+tags:
+  - digression
+  - correctness
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a user who first asks a legitimate sales question, then asks something
+        completely outside the sales domain.
+        Start by asking: 'Show me open sales orders.' Accept the response.
+        Then ask: 'Can you also tell me the HR payroll status for this month?'
+        If the agent declines and redirects you, accept the redirect and ask one more
+        sales question: 'OK, can you show me customers with declining orders instead?'
+      initial_message: 'Show me open sales orders.'
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The agent responds correctly to the initial sales question with retrieved data.'
+      - check: 'When asked about HR payroll, the agent declines to answer and redirects the user to ask a sales-related question instead of attempting an HR answer.'
+      - check: 'After the redirect, when asked about declining customer orders, the agent responds with a sales-relevant answer using retrieved data.'
+    rule_compliance_validations:
+      - check: 'The agent does not attempt to answer the HR payroll question and does not fabricate HR data.'

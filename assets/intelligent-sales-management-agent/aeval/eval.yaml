@@ -1,0 +1,19 @@
+requirements:
+  agent_response_requirements:
+    - 'When asked for sales dashboard KPIs, the agent returns total order count, total net value, active customer count, and open order count, all sourced from retrieved data.'
+    - 'When presenting customer information, the agent includes customer name, credit limit, credit exposure, and recent sales orders with their status, all grounded in retrieved records.'
+    - 'When reporting on order exceptions, the agent identifies credit-blocked, delivery-blocked, or overdue orders and explains the exception reason based on retrieved data.'
+    - 'When answering a natural language sales query, the agent provides a response that directly addresses the question using values retrieved from tool calls in the same conversation.'
+    - 'When performing deep analysis, the agent states which data sources and tool calls contributed to its response, and does not present a recommendation without citing the underlying retrieved records.'
+  tool_requirements:
+    - 'Agent must call list_salesorder_for_sap_self to retrieve sales order data when the user asks for orders, KPIs, or performance summaries.'
+    - 'Agent must call list_a_customer_for_api_business_partner or get_a_businesspartner_for_api_business_partner when the user requests customer information or a customer lookup.'
+    - 'Agent must call list_a_creditblockedsalesdocument when the user asks about credit-blocked orders or blocked deliveries.'
+    - 'Agent must call get_salesorder_for_sap_self with the SalesOrder key supplied by the user when the user requests details of a specific sales order.'
+    - 'Agent must call list_a_billingdocument_for_api_billing_document_srv when the user asks about billing documents, invoices, or billed amounts.'
+  rule_compliance_requirements:
+    - 'WHEN the active data layer is sample data, the agent MUST label its responses with [SAMPLE DATA] so the user knows no live S/4HANA data was used.'
+    - 'WHEN a tool call returns an error, the agent MUST report the error to the user and MUST NOT fabricate or infer data values that the tool did not return.'
+    - 'The agent MUST NOT perform or suggest any create, update, or delete operation on S/4HANA records; all interactions are read-only.'
+    - 'WHEN the user asks a question outside the sales domain, the agent MUST decline to answer and redirect the user to ask a sales-related question.'
+    - 'The agent MUST NOT state any customer name, order number, amount, or date that was not returned by a tool call in the current conversation.'

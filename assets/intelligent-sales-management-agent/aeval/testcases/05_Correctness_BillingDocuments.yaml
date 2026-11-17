@@ -1,0 +1,28 @@
+id: 05_Correctness_BillingDocuments
+description: >
+  Happy path UJ-05 — agent retrieves billing documents and summarises billed amounts,
+  document types, and associated customers.
+tags:
+  - correctness
+  - billing
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Priya Nair, a Sales Operations Analyst. You need to see recent billing
+        documents to prepare a revenue summary for leadership.
+        You want: a list of recent invoices with document number, billing date, net value,
+        currency, and customer identifier.
+        You do not know the document numbers — the agent must retrieve them.
+        If asked for a date range, say 'last 30 days'.
+      initial_message: 'Show me the recent billing documents for the last 30 days.'
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response lists at least one billing document with a document number, billing date, net value, and currency, all sourced from retrieved data.'
+      - check: 'Every billing document number and amount in the response traces to a tool response in this conversation — the agent invents no billing data.'
+      - check: 'The response is labelled [SAMPLE DATA].'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_a_billingdocument_for_api_billing_document_srv
+          output:
+            check: 'The tool returns a non-error response containing billing documents with BillingDocument identifier, BillingDocumentDate, TotalNetAmount, and TransactionCurrency fields.'

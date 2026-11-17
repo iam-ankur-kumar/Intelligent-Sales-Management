@@ -1,0 +1,43 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: service
+
+metadata:
+  name: intelligent-sales-management-app
+  description: Unified sales management application providing a React/SAP UI5 Web Components frontend with a CAP Node.js backend. Delivers Sales Dashboard, Customer Management, Sales Order Management, AI Sales Assistant, and Agent Activity screens.
+  version: "1.0.0"
+
+container:
+  buildPath: .
+  port: 4004
+
+provides:
+  apis:
+    - name: intelligent-sales-management-app
+      kind: rest
+      ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.intelligent-sales-management-app:v1
+
+requires:
+  - name: intelligent-sales-management-agent
+    kind: agent
+    ordId: customer.build:agent:intelligent-sales-mgmt-767d1.intelligent-sales-management-agent:v1
+
+probes:
+  startup:
+    path: /health
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /health
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /health
+    initialDelaySeconds: 15
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

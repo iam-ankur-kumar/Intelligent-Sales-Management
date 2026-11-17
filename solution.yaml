@@ -1,0 +1,14 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: intelligent-sales-mgmt-767d1
+  version: "1.0.0"
+  description: Intelligent Sales Management Platform — AI-powered sales assistant with unified dashboard, customer and order management, connected to SAP S/4HANA Cloud Public Edition via standard OData APIs.
+
+assets:
+  - ref: ./assets/intelligent-sales-management-agent/asset.yaml
+  - ref: ./assets/sap-s4-ce-salesorder-0001-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-api-business-partner-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-api-billing-document-srv-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-api-sls-doc-with-credit-block-mcp-server/asset.yaml

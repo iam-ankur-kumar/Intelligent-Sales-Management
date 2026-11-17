@@ -1,0 +1,31 @@
+id: 02_Correctness_CustomerSearch
+description: >
+  Happy path UJ-02 — agent looks up a customer by name and returns their profile
+  including credit limit, credit exposure, and recent sales orders.
+tags:
+  - correctness
+  - customer
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Marcus Webb, a Sales Representative preparing for a customer call.
+        You want to look up information about a customer named Skytech Industries.
+        You know the customer is called Skytech Industries but you do not know their
+        customer number.
+        You want to see: their credit limit, credit exposure, account group, and their
+        last few sales orders with status and value.
+        If the agent returns multiple customers, ask about the one named Skytech Industries.
+      initial_message: 'Can you look up the customer Skytech Industries and show me their profile?'
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The response includes the customer name, a credit limit, and a credit exposure value, all grounded in what the tool returned in this conversation.'
+      - check: 'The response includes at least one recent sales order for the customer, showing an order number, order value, and status, all retrieved from tool calls.'
+      - check: 'The response is labelled [SAMPLE DATA].'
+    rule_compliance_validations:
+      - check: 'The agent does not state a credit limit, credit exposure, or order value that was not returned by a tool in this conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_a_customer_for_api_business_partner
+          output:
+            check: 'The tool returns a non-error response containing customer records with BusinessPartner identifier and customer attributes.'

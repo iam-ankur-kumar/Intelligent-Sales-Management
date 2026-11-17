@@ -1,0 +1,30 @@
+id: 03_Correctness_CreditBlockedOrders
+description: >
+  Happy path UJ-03 — agent retrieves and lists all credit-blocked sales orders,
+  explaining each block and its value.
+tags:
+  - correctness
+  - credit_block
+  - exceptions
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Sarah Chen, a Sales Manager. You want to know which sales orders are
+        currently blocked due to credit issues so you can act on them before end of day.
+        You do not know the order numbers — the agent must retrieve and list them.
+        You want: order number, customer name or ID, total value, and reason for the block.
+        If the agent asks for a sales organisation, say 'all organisations'.
+      initial_message: 'Show me all credit-blocked sales orders.'
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response lists at least one credit-blocked order with its order number, the blocking reason, and the order value, all sourced from retrieved data.'
+      - check: 'Every order number and value in the response traces to a tool response in this conversation — the agent invents no order identifiers.'
+      - check: 'The response is labelled [SAMPLE DATA].'
+    rule_compliance_validations:
+      - check: 'The agent does not suggest releasing or modifying any credit block — all output is read-only analysis.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_a_creditblockedsalesdocument
+          output:
+            check: 'The tool returns a non-error response containing credit-blocked sales documents with a sales order identifier and credit block details.'

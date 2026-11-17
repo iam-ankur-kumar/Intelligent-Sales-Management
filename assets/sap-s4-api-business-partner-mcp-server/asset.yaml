@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-business-partner-mcp-server
+  description: Exposes SAP S/4HANA Cloud Business Partner (API_BUSINESS_PARTNER) operations as MCP tools for querying customer master data, addresses, and sales area data.
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: API_BUSINESS_PARTNER
+    kind: api
+    ordId: sap.s4:apiResource:API_BUSINESS_PARTNER:v1
+
+provides:
+  apis:
+    - name: sap-s4-api-business-partner-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-business-partner-mcp-server:v1

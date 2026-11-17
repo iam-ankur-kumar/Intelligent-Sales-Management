@@ -1,0 +1,55 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: intelligent-sales-management-agent
+  description: AI-powered sales assistant that helps sales managers monitor customers, analyze sales orders, understand sales performance, and receive actionable business recommendations using SAP S/4HANA Cloud data.
+
+provides:
+  apis:
+    - name: intelligent-sales-management-agent
+      kind: a2a
+      ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.intelligent-sales-management-agent:v1
+
+container:
+  buildPath: .
+  port: 8080
+  env:
+    - name: USE_SAMPLE_DATA
+      value: "true"
+
+mockFile: mcp-mock.json
+
+requires:
+  - name: sap-s4-ce-salesorder-0001-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-ce-salesorder-0001-mcp-server:v1
+  - name: sap-s4-api-business-partner-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-business-partner-mcp-server:v1
+  - name: sap-s4-api-billing-document-srv-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-billing-document-srv-mcp-server:v1
+  - name: sap-s4-api-sls-doc-with-credit-block-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-sls-doc-with-credit-block-mcp-server:v1
+
+probes:
+  startup:
+    path: /.well-known/agent-card.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent-card.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent-card.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

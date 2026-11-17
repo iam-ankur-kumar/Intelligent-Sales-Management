@@ -1,0 +1,866 @@
+{
+  "servers": {
+    "ce-salesorder-0001": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for the sap_self service.",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "batch_for_sap_self": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "list_salesorder_for_sap_self": {
+          "description": "Retrieve a list of entities from the SalesOrder collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SalesOrder": "SO-100001",
+                "SoldToParty": "CUST-0001",
+                "SalesOrderType": "OR",
+                "SalesOrganization": "1010",
+                "SalesOrderDate": "/Date(1748736000000)/",
+                "RequestedDeliveryDate": "/Date(1749340800000)/",
+                "OverallSDProcessStatus": "A",
+                "TotalNetAmount": "45000.00",
+                "TransactionCurrency": "USD",
+                "PurchaseOrderByCustomer": "PO-2024-001"
+              },
+              {
+                "SalesOrder": "SO-100002",
+                "SoldToParty": "CUST-0001",
+                "SalesOrderType": "OR",
+                "SalesOrganization": "1010",
+                "SalesOrderDate": "/Date(1748736000000)/",
+                "RequestedDeliveryDate": "/Date(1749340800000)/",
+                "OverallSDProcessStatus": "B",
+                "TotalNetAmount": "128000.00",
+                "TransactionCurrency": "USD",
+                "PurchaseOrderByCustomer": "PO-2024-001"
+              }
+            ]
+          }
+        },
+        "get_salesorder_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the SalesOrder collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SalesOrder": "SO-100001",
+            "SoldToParty": "CUST-0001",
+            "SalesOrderType": "OR",
+            "SalesOrganization": "1010",
+            "SalesOrderDate": "/Date(1748736000000)/",
+            "RequestedDeliveryDate": "/Date(1749340800000)/",
+            "OverallSDProcessStatus": "A",
+            "TotalNetAmount": "45000.00",
+            "TransactionCurrency": "USD",
+            "PurchaseOrderByCustomer": "PO-2024-001"
+          }
+        },
+        "count_salesorder_for_sap_self": {
+          "description": "Get the total count of entities in the SalesOrder collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 25
+          }
+        },
+        "list_salesorderitem_for_sap_self": {
+          "description": "Retrieve a list of entities from the SalesOrderItem collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SalesOrder": "SO-100001",
+                "SalesOrderItem": "10",
+                "Material": "MAT-PRD-001",
+                "SalesOrderItemText": "Enterprise Software License",
+                "RequestedQuantity": "5",
+                "RequestedQuantityUnit": "EA",
+                "NetPriceAmount": "9000.00",
+                "TransactionCurrency": "USD",
+                "SalesOrderItemCategory": "TAN",
+                "ItemGrossWeight": "0.00",
+                "Plant": "1010"
+              },
+              {
+                "SalesOrder": "SO-100001",
+                "SalesOrderItem": "20",
+                "Material": "MAT-SVC-002",
+                "SalesOrderItemText": "Implementation Services",
+                "RequestedQuantity": "5",
+                "RequestedQuantityUnit": "EA",
+                "NetPriceAmount": "9000.00",
+                "TransactionCurrency": "USD",
+                "SalesOrderItemCategory": "TAN",
+                "ItemGrossWeight": "0.00",
+                "Plant": "1010"
+              }
+            ]
+          }
+        },
+        "get_salesorderitem_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the SalesOrderItem collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SalesOrder": "SO-100001",
+            "SalesOrderItem": "10",
+            "Material": "MAT-PRD-001",
+            "SalesOrderItemText": "Enterprise Software License",
+            "RequestedQuantity": "5",
+            "RequestedQuantityUnit": "EA",
+            "NetPriceAmount": "9000.00",
+            "TransactionCurrency": "USD",
+            "SalesOrderItemCategory": "TAN",
+            "ItemGrossWeight": "0.00",
+            "Plant": "1010"
+          }
+        },
+        "count_salesorderitem_for_sap_self": {
+          "description": "Get the total count of entities in the SalesOrderItem collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 50
+          }
+        },
+        "list_salesorderscheduleline_for_sap_self": {
+          "description": "Retrieve a list of entities from the SalesOrderScheduleLine collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SalesOrder": "SO-100001",
+                "SalesOrderItem": "10",
+                "ScheduleLine": "1",
+                "RequestedDeliveryDate": "/Date(1749340800000)/",
+                "ScheduleLineOrderQuantity": "5",
+                "TransactionCurrency": "USD",
+                "ScheduleLineCategory": "CP"
+              }
+            ]
+          }
+        },
+        "get_salesorderscheduleline_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the SalesOrderScheduleLine collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SalesOrder": "SO-100001",
+            "SalesOrderItem": "10",
+            "ScheduleLine": "1",
+            "RequestedDeliveryDate": "/Date(1749340800000)/",
+            "ScheduleLineOrderQuantity": "5",
+            "TransactionCurrency": "USD",
+            "ScheduleLineCategory": "CP"
+          }
+        },
+        "count_salesorderscheduleline_for_sap_self": {
+          "description": "Get the total count of entities in the SalesOrderScheduleLine collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 5
+          }
+        }
+      }
+    },
+    "api-business-partner": {
+      "mcp_server_name": "sap.mcp/api_business_partner",
+      "description": "MCP server for the api_business_partner service.",
+      "tools": {
+        "get_metadata_api_business_partner": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "batch_for_api_business_partner": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "list_a_businesspartner_for_api_business_partner": {
+          "description": "Retrieve a list of entities from the A_BusinessPartner collection in the api_business_partner service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BusinessPartner": "CUST-0001",
+                "BusinessPartnerFullName": "Acme Technology Solutions",
+                "BusinessPartnerCategory": "2",
+                "BusinessPartnerGrouping": "CUST",
+                "Industry": "HT",
+                "CountryRegion": "US",
+                "Language": "EN",
+                "NaturalPersonEmployerName": "",
+                "IsMale": false,
+                "IsFemale": false,
+                "IsNaturalPerson": ""
+              },
+              {
+                "BusinessPartner": "CUST-0002",
+                "BusinessPartnerFullName": "Global Manufacturing Corp",
+                "BusinessPartnerCategory": "2",
+                "BusinessPartnerGrouping": "CUST",
+                "Industry": "HT",
+                "CountryRegion": "US",
+                "Language": "EN",
+                "NaturalPersonEmployerName": "",
+                "IsMale": false,
+                "IsFemale": false,
+                "IsNaturalPerson": ""
+              }
+            ]
+          }
+        },
+        "get_a_businesspartner_for_api_business_partner": {
+          "description": "Retrieve a single entity by its key from the A_BusinessPartner collection in the api_business_partner service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "BusinessPartner": "CUST-0001",
+            "BusinessPartnerFullName": "Acme Technology Solutions",
+            "BusinessPartnerCategory": "2",
+            "BusinessPartnerGrouping": "CUST",
+            "Industry": "HT",
+            "CountryRegion": "US",
+            "Language": "EN",
+            "NaturalPersonEmployerName": "",
+            "IsMale": false,
+            "IsFemale": false,
+            "IsNaturalPerson": ""
+          }
+        },
+        "count_a_businesspartner_for_api_business_partner": {
+          "description": "Get the total count of entities in the A_BusinessPartner collection in the api_business_partner service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 10
+          }
+        },
+        "list_a_businesspartneraddress_for_api_business_partner": {
+          "description": "Retrieve a list of entities from the A_BusinessPartnerAddress collection in the api_business_partner service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BusinessPartner": "CUST-0001",
+                "AddressID": "10001",
+                "CityName": "San Francisco",
+                "Country": "US",
+                "PostalCode": "94102",
+                "Region": "CA",
+                "StreetName": "Market Street",
+                "HouseNumber": "123",
+                "EmailAddress": "contact@acmetech.com"
+              }
+            ]
+          }
+        },
+        "get_a_businesspartneraddress_for_api_business_partner": {
+          "description": "Retrieve a single entity by its key from the A_BusinessPartnerAddress collection in the api_business_partner service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "BusinessPartner": "CUST-0001",
+            "AddressID": "10001",
+            "CityName": "San Francisco",
+            "Country": "US",
+            "PostalCode": "94102",
+            "Region": "CA",
+            "StreetName": "Market Street",
+            "HouseNumber": "123",
+            "EmailAddress": "contact@acmetech.com"
+          }
+        },
+        "count_a_businesspartneraddress_for_api_business_partner": {
+          "description": "Get the total count of entities in the A_BusinessPartnerAddress collection in the api_business_partner service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 1
+          }
+        },
+        "list_a_customer_for_api_business_partner": {
+          "description": "Retrieve a list of entities from the A_Customer collection in the api_business_partner service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Customer": "CUST-0001",
+                "AuthorizationGroup": "",
+                "BillingIsBlockedForCustomer": "",
+                "CreationDate": "/Date(1672531200000)/",
+                "CustomerAccountGroup": "0001",
+                "NielsenRegion": "",
+                "PaymentReason": "",
+                "TradeStyle": ""
+              }
+            ]
+          }
+        },
+        "get_a_customer_for_api_business_partner": {
+          "description": "Retrieve a single entity by its key from the A_Customer collection in the api_business_partner service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "Customer": "CUST-0001",
+            "AuthorizationGroup": "",
+            "BillingIsBlockedForCustomer": "",
+            "CreationDate": "/Date(1672531200000)/",
+            "CustomerAccountGroup": "0001",
+            "NielsenRegion": "",
+            "PaymentReason": "",
+            "TradeStyle": ""
+          }
+        },
+        "count_a_customer_for_api_business_partner": {
+          "description": "Get the total count of entities in the A_Customer collection in the api_business_partner service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_business_partner tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 10
+          }
+        }
+      }
+    },
+    "api-billing-document-srv": {
+      "mcp_server_name": "sap.mcp/api_billing_document_srv",
+      "description": "MCP server for the api_billing_document_srv service.",
+      "tools": {
+        "get_metadata_api_billing_document_srv": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "batch_for_api_billing_document_srv": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "list_a_billingdocument_for_api_billing_document_srv": {
+          "description": "Retrieve a list of entities from the A_BillingDocument collection in the api_billing_document_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "BL-9001",
+                "BillingDocumentType": "F2",
+                "SDDocumentCategory": "M",
+                "SoldToParty": "CUST-0001",
+                "BillingDocumentDate": "/Date(1748390400000)/",
+                "TotalNetAmount": "78000.00",
+                "TransactionCurrency": "USD",
+                "FiscalYear": "2024",
+                "CompanyCode": "1010"
+              },
+              {
+                "BillingDocument": "BL-9002",
+                "BillingDocumentType": "F2",
+                "SDDocumentCategory": "M",
+                "SoldToParty": "CUST-0002",
+                "BillingDocumentDate": "/Date(1748390400000)/",
+                "TotalNetAmount": "234500.00",
+                "TransactionCurrency": "USD",
+                "FiscalYear": "2024",
+                "CompanyCode": "1010"
+              }
+            ]
+          }
+        },
+        "get_a_billingdocument_for_api_billing_document_srv": {
+          "description": "Retrieve a single entity by its key from the A_BillingDocument collection in the api_billing_document_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "BillingDocument": "BL-9001",
+            "BillingDocumentType": "F2",
+            "SDDocumentCategory": "M",
+            "SoldToParty": "CUST-0001",
+            "BillingDocumentDate": "/Date(1748390400000)/",
+            "TotalNetAmount": "78000.00",
+            "TransactionCurrency": "USD",
+            "FiscalYear": "2024",
+            "CompanyCode": "1010"
+          }
+        },
+        "count_a_billingdocument_for_api_billing_document_srv": {
+          "description": "Get the total count of entities in the A_BillingDocument collection in the api_billing_document_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 8
+          }
+        },
+        "list_a_billingdocumentitem_for_api_billing_document_srv": {
+          "description": "Retrieve a list of entities from the A_BillingDocumentItem collection in the api_billing_document_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "BillingDocument": "BL-9001",
+                "BillingDocumentItem": "10",
+                "Material": "MAT-PRD-001",
+                "BillingDocumentItemText": "Enterprise Software License",
+                "BillingQuantity": "5",
+                "BillingQuantityUnit": "EA",
+                "NetAmount": "78000.00",
+                "TransactionCurrency": "USD",
+                "Plant": "1010"
+              }
+            ]
+          }
+        },
+        "get_a_billingdocumentitem_for_api_billing_document_srv": {
+          "description": "Retrieve a single entity by its key from the A_BillingDocumentItem collection in the api_billing_document_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "BillingDocument": "BL-9001",
+            "BillingDocumentItem": "10",
+            "Material": "MAT-PRD-001",
+            "BillingDocumentItemText": "Enterprise Software License",
+            "BillingQuantity": "5",
+            "BillingQuantityUnit": "EA",
+            "NetAmount": "78000.00",
+            "TransactionCurrency": "USD",
+            "Plant": "1010"
+          }
+        },
+        "count_a_billingdocumentitem_for_api_billing_document_srv": {
+          "description": "Get the total count of entities in the A_BillingDocumentItem collection in the api_billing_document_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_billing_document_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 10
+          }
+        }
+      }
+    },
+    "api-sls-doc-with-credit-block": {
+      "mcp_server_name": "sap.mcp/api_sls_doc_with_credit_block",
+      "description": "MCP server for the api_sls_doc_with_credit_block service.",
+      "tools": {
+        "get_metadata_api_sls_doc_with_credit_block": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SDDocument": "SO-100012",
+            "SDDocumentCategory": "C",
+            "SoldToParty": "CUST-0003",
+            "CreditControlArea": "A000",
+            "TotalCreditCheckAmountInCCACrcy": "95000.00",
+            "CreditControlAreaCurrency": "USD",
+            "LatestHoldDate": "/Date(1748736000000)/",
+            "CreditBlockingReason": "B",
+            "CustomerCreditGroup": "01"
+          }
+        },
+        "batch_for_api_sls_doc_with_credit_block": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        },
+        "list_a_creditblockedsalesdocument": {
+          "description": "Retrieve a list of entities from the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        },
+        "get_a_creditblockedsalesdocument": {
+          "description": "Retrieve a single entity by its key from the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SDDocument": "SO-100012",
+            "SDDocumentCategory": "C",
+            "SoldToParty": "CUST-0003",
+            "CreditControlArea": "A000",
+            "TotalCreditCheckAmountInCCACrcy": "95000.00",
+            "CreditControlAreaCurrency": "USD",
+            "LatestHoldDate": "/Date(1748736000000)/",
+            "CreditBlockingReason": "B",
+            "CustomerCreditGroup": "01"
+          }
+        },
+        "count_a_creditblockedsalesdocument": {
+          "description": "Get the total count of entities in the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": 2
+          }
+        },
+        "list_a_salesdocumentrjcnreason_for_api_sls_doc_with_credit_block": {
+          "description": "Retrieve a list of entities from the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        },
+        "get_a_salesdocumentrjcnreason_for_api_sls_doc_with_credit_block": {
+          "description": "Retrieve a single entity by its key from the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SDDocument": "SO-100012",
+            "SDDocumentCategory": "C",
+            "SoldToParty": "CUST-0003",
+            "CreditControlArea": "A000",
+            "TotalCreditCheckAmountInCCACrcy": "95000.00",
+            "CreditControlAreaCurrency": "USD",
+            "LatestHoldDate": "/Date(1748736000000)/",
+            "CreditBlockingReason": "B",
+            "CustomerCreditGroup": "01"
+          }
+        },
+        "count_a_salesdocumentrjcnreason": {
+          "description": "Get the total count of entities in the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": []
+          }
+        },
+        "function_checkcreditblock_for_api_sls_doc_with_credit_block": {
+          "description": "OData function: CheckCreditBlock (Checks credit status of a sales document. Consumers must pass the sales document number and SD document category.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        },
+        "function_rejectcreditblock_for_api_sls_doc_with_credit_block": {
+          "description": "OData function: RejectCreditBlock (Rejects the release request of a sales document with a reject reason. Consumers must pass the sales document number, SD document category, and rejection reason.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        },
+        "function_releasecreditblock_for_api_sls_doc_with_credit_block": {
+          "description": "OData function: ReleaseCreditBlock (Releases a sales document by removing the credit block on it. Consumers must pass the sales document number and SD document category.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SDDocument": "SO-100012",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0003",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "95000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              },
+              {
+                "SDDocument": "SO-100013",
+                "SDDocumentCategory": "C",
+                "SoldToParty": "CUST-0006",
+                "CreditControlArea": "A000",
+                "TotalCreditCheckAmountInCCACrcy": "210000.00",
+                "CreditControlAreaCurrency": "USD",
+                "LatestHoldDate": "/Date(1748736000000)/",
+                "CreditBlockingReason": "B",
+                "CustomerCreditGroup": "01"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "intelligent-sales-management-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 4,
+    "total_tools": 41,
+    "generated_from": [
+      "translation.json"
+    ],
+    "generation_date": "2026-11-09"
+  }
+}

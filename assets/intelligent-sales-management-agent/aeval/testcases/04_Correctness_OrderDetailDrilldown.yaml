@@ -1,0 +1,30 @@
+id: 04_Correctness_OrderDetailDrilldown
+description: >
+  Happy path UJ-04 — agent retrieves full detail for a specific sales order including
+  header, line items, material, quantities, and delivery dates.
+tags:
+  - correctness
+  - order_detail
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Marcus Webb, a Sales Representative. A customer called about order 4500000001.
+        You want to see the full details: order header (customer, total value, delivery date,
+        status), and all line items (material, quantity, unit price, delivery date).
+        You know the order number is 4500000001.
+        If the agent asks you to confirm the order number, confirm 4500000001.
+      initial_message: 'Can you show me the full details for sales order 4500000001?'
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response addresses sales order 4500000001 and includes the customer identifier, total net value, overall status, and at least one line item with material and quantity, all grounded in retrieved data.'
+      - check: 'Every value stated for order 4500000001 — amounts, dates, statuses — traces to a tool response in this conversation.'
+      - check: 'The response is labelled [SAMPLE DATA].'
+    tool_validations:
+      expected_tool_calls:
+        - tool: get_salesorder_for_sap_self
+          parameters:
+            SalesOrder:
+              value: '4500000001'
+          output:
+            check: 'The tool returns a non-error response for sales order 4500000001 carrying SoldToParty, TotalNetAmount, TransactionCurrency, OverallSDProcessStatus, and RequestedDeliveryDate.'

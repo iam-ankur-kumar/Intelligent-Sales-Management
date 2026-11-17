@@ -1,0 +1,34 @@
+id: 09_Memory_FollowUpQuery
+description: >
+  Memory test — agent retains context from an earlier turn and correctly applies it
+  to a follow-up question without re-asking for information already supplied.
+tags:
+  - memory
+  - correctness
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Marcus Webb, a Sales Representative. You first ask for information about
+        a specific customer, then follow up with a related question using pronouns that
+        refer back to that customer.
+        Start by asking: 'Can you show me customer details for Skytech Industries?'
+        After the agent replies, follow up with: 'What are their most recent sales orders?'
+        (Use 'their' to refer to Skytech Industries — do not repeat the name.)
+        If the agent asks which customer you mean, it has lost context — note this.
+        Accept the follow-up response if it is about Skytech Industries.
+      initial_message: 'Can you show me customer details for Skytech Industries?'
+    max_turns: 6
+    agent_response_validations:
+      - check: 'In response to the first question, the agent returns customer details for Skytech Industries grounded in retrieved data.'
+      - check: 'In response to the follow-up "their most recent sales orders", the agent correctly interprets the pronoun as referring to Skytech Industries and returns sales order data for that customer — without asking which customer was meant.'
+    rule_compliance_validations:
+      - check: 'The agent does not ask the user to repeat the customer name for the follow-up question, demonstrating that it retained context from the first turn.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_a_customer_for_api_business_partner
+          output:
+            check: 'The tool returns a non-error response with customer records from which the agent can identify Skytech Industries.'
+        - tool: list_salesorder_for_sap_self
+          output:
+            check: 'The tool returns a non-error response of sales orders that the agent uses to show Skytech Industries recent orders.'

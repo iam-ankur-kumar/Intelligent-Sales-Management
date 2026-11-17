@@ -1,0 +1,24 @@
+{
+  "name": "intelligent-sales-management-app",
+  "version": "1.0.0",
+  "description": "Intelligent Sales Management Application — CAP backend + React/SAP UI5 Web Components frontend",
+  "main": "srv/server.js",
+  "scripts": {
+    "start": "cds serve --production",
+    "dev": "cds watch",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPattern=test/",
+    "build:ui": "cd app/sales-ui && npm install && npm run build"
+  },
+  "dependencies": {
+    "@sap/cds": "^8",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^29",
+    "@jest/globals": "^29"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

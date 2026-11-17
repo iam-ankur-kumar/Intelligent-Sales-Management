@@ -1,0 +1,697 @@
+[
+  {
+    "name": "get_metadata_api_sls_doc_with_credit_block",
+    "title": "get_metadata_api_sls_doc_with_credit_block",
+    "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+    "odataType": {
+      "metadataRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "batch_for_api_sls_doc_with_credit_block",
+    "title": "batch_for_api_sls_doc_with_credit_block",
+    "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+    "odataType": {
+      "batchRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false
+    }
+  },
+  {
+    "name": "list_a_creditblockedsalesdocument",
+    "title": "list_A_CreditBlockedSalesDocument_for_api_sls_doc_with_credit_block",
+    "description": "Retrieve a list of entities from the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_CreditBlockedSalesDocument",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "get_a_creditblockedsalesdocument",
+    "title": "get_A_CreditBlockedSalesDocument_for_api_sls_doc_with_credit_block",
+    "description": "Retrieve a single entity by its key from the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_CreditBlockedSalesDocument",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SalesDocument",
+            "newParameterName": "salesdocument"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "count_a_creditblockedsalesdocument",
+    "title": "count_A_CreditBlockedSalesDocument_for_api_sls_doc_with_credit_block",
+    "description": "Get the total count of entities in the A_CreditBlockedSalesDocument collection in the api_sls_doc_with_credit_block service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_CreditBlockedSalesDocument",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "list_a_salesdocumentrjcnreason_for_api_sls_doc_with_credit_block",
+    "title": "list_A_SalesDocumentRjcnReason_for_api_sls_doc_with_credit_block",
+    "description": "Retrieve a list of entities from the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SalesDocumentRjcnReason",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "get_a_salesdocumentrjcnreason_for_api_sls_doc_with_credit_block",
+    "title": "get_A_SalesDocumentRjcnReason_for_api_sls_doc_with_credit_block",
+    "description": "Retrieve a single entity by its key from the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SalesDocumentRjcnReason",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SalesDocumentRjcnReason",
+            "newParameterName": "salesdocumentrjcnreason"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "count_a_salesdocumentrjcnreason",
+    "title": "count_A_SalesDocumentRjcnReason_for_api_sls_doc_with_credit_block",
+    "description": "Get the total count of entities in the A_SalesDocumentRjcnReason collection in the api_sls_doc_with_credit_block service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_sls_doc_with_credit_block tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SalesDocumentRjcnReason",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "function_checkcreditblock_for_api_sls_doc_with_credit_block",
+    "title": "function_CheckCreditBlock_for_api_sls_doc_with_credit_block",
+    "description": "OData function: CheckCreditBlock (Checks credit status of a sales document. Consumers must pass the sales document number and SD document category.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+    "odataType": {
+      "operation": {
+        "name": "CheckCreditBlock",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "SDDocumentCategory",
+            "newParameterName": "sddocumentcategory"
+          },
+          {
+            "name": "SalesDocument",
+            "newParameterName": "salesdocument"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "function_rejectcreditblock_for_api_sls_doc_with_credit_block",
+    "title": "function_RejectCreditBlock_for_api_sls_doc_with_credit_block",
+    "description": "OData function: RejectCreditBlock (Rejects the release request of a sales document with a reject reason. Consumers must pass the sales document number, SD document category, and rejection reason.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+    "odataType": {
+      "operation": {
+        "name": "RejectCreditBlock",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "SDDocumentCategory",
+            "newParameterName": "sddocumentcategory"
+          },
+          {
+            "name": "SalesDocumentRjcnReason",
+            "newParameterName": "salesdocumentrjcnreason"
+          },
+          {
+            "name": "SalesDocument",
+            "newParameterName": "salesdocument"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  },
+  {
+    "name": "function_releasecreditblock_for_api_sls_doc_with_credit_block",
+    "title": "function_ReleaseCreditBlock_for_api_sls_doc_with_credit_block",
+    "description": "OData function: ReleaseCreditBlock (Releases a sales document by removing the credit block on it. Consumers must pass the sales document number and SD document category.) in the api_sls_doc_with_credit_block service. Returns: API_SLS_DOC_WITH_CREDIT_BLOCK.ReturnMessage",
+    "odataType": {
+      "operation": {
+        "name": "ReleaseCreditBlock",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "SalesDocument",
+            "newParameterName": "salesdocument"
+          },
+          {
+            "name": "SDDocumentCategory",
+            "newParameterName": "sddocumentcategory"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true
+    }
+  }
+]

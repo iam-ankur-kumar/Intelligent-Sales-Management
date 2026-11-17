@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-billing-document-srv-mcp-server
+  description: Exposes SAP S/4HANA Cloud Billing Document (API_BILLING_DOCUMENT_SRV) operations as MCP tools for querying billing documents and revenue data.
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: API_BILLING_DOCUMENT_SRV
+    kind: api
+    ordId: sap.s4:apiResource:API_BILLING_DOCUMENT_SRV:v1
+
+provides:
+  apis:
+    - name: sap-s4-api-billing-document-srv-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-billing-document-srv-mcp-server:v1

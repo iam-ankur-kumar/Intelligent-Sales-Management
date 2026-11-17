@@ -1,0 +1,30 @@
+id: 01_Correctness_SalesDashboardKPIs
+description: >
+  Happy path UJ-01 — agent retrieves and presents dashboard KPIs including total order
+  count, total net value, active customer count, and open orders for the current month.
+tags:
+  - correctness
+  - dashboard
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are Sarah Chen, a Sales Manager. You want a summary of this month's sales
+        dashboard KPIs so you can brief your team.
+        You want to see: total number of sales orders, total net order value, number of
+        active customers, and count of open orders.
+        You do not know these numbers yet — the agent must retrieve and tell you.
+        If the agent asks for a sales organisation or date range, answer with
+        'any organisation' and 'this month'.
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response includes a total order count, a total net value with a currency, and a count of open orders, all sourced from retrieved data and not invented by the agent.'
+      - check: 'Every numeric figure in the response traces to a tool call made in this conversation — the agent does not state a value it did not retrieve.'
+      - check: 'The response is labelled [SAMPLE DATA] because no live S/4HANA system is connected.'
+    rule_compliance_validations:
+      - check: 'The agent does not state any order count, net value, or customer count that it did not obtain from a tool response in this conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_salesorder_for_sap_self
+          output:
+            check: 'The tool returns a non-error response containing a list of sales orders, each carrying a SalesOrder identifier, TotalNetAmount, TransactionCurrency, and OverallSDProcessStatus.'

@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-sls-doc-with-credit-block-mcp-server
+  description: Exposes SAP S/4HANA Cloud Sales Document with Credit Block (API_SLS_DOC_WITH_CREDIT_BLOCK) operations as MCP tools for detecting and managing credit-blocked sales orders.
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: API_SLS_DOC_WITH_CREDIT_BLOCK
+    kind: api
+    ordId: sap.s4:apiResource:API_SLS_DOC_WITH_CREDIT_BLOCK:v1
+
+provides:
+  apis:
+    - name: sap-s4-api-sls-doc-with-credit-block-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:intelligent-sales-mgmt-767d1.sap-s4-api-sls-doc-with-credit-block-mcp-server:v1
